@@ -1,38 +1,38 @@
-import java.awt.Graphics;
+import java.awt.*;
 
 
 public class Splatter {
 
-  private BloodParticles[] splatter;
+    private BloodParticles[] splatter;
 
-  public Splatter() {
-    splatter = new BloodParticles[1000];
+    public Splatter() {
+        splatter = new BloodParticles[1000];
 
-  }
-
-  public void splatter() {
-    for (int i = 0; i < splatter.length; i++) {
-      splatter[i].move();
     }
-  }
 
-  public void draw(Graphics g) {
-    for (int i = 0; i < splatter.length; i++) {
-      g.drawImage(splatter[i].getImage(), splatter[i].getX(),
-          splatter[i].getY(), null);
+    public void splatter() {
+        for (int i = 0; i < splatter.length; i++) {
+            splatter[i].move();
+        }
     }
-  }
 
-  public void setPoint(int x, int y) {
-    for (int i = 0; i < splatter.length; i++) {
-      splatter[i] = new BloodParticles(x, y);
+    public void draw(Graphics g) {
+        for (int i = 0; i < splatter.length; i++) {
+            g.drawImage(splatter[i].getImage(), splatter[i].getX(),
+                    splatter[i].getY(), null);
+        }
     }
-  }
 
-  public void reset() {
-    for (int i = 0; i < splatter.length; i++) {
-      splatter[i] = null;
+    public void setPoint(int x, int y) {
+        for (int i = 0; i < splatter.length; i++) {
+            splatter[i] = new BloodParticles(x, y);
+        }
     }
-  }
+
+    public void reset() {
+        for (int i = 0; i < splatter.length; i++) {
+            splatter[i] = null;
+        }
+    }
 
 }
