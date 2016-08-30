@@ -6,12 +6,14 @@ public class Trap {
 
   private int xPos, yPos, width, height;
   public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, NONE = 4;
-  private int direction;
+  private int direction, speed;
   private boolean triggered;
   private LinkedList<ImageIcon> traps = new LinkedList<ImageIcon>();
   private ImageIcon trap;
 
-  public Trap(int x, int y, int type, int dir) {
+  //TYPES OF TRAPS, 0 = APPLE, 1 = UPWARDS SPIKE, 2 = DOWNWARDS SPIKE, 3 = LIGHTNING
+
+  public Trap(int x, int y, int type, int speed, int dir) {
     xPos = x;
     yPos = y;
     for (int i = 0; i < 4; i++) {
@@ -22,6 +24,7 @@ public class Trap {
     height = trap.getIconHeight();
     direction = dir;
     triggered = false;
+    this.speed = speed;
   }
 
   public Image getImg() {
@@ -36,13 +39,13 @@ public class Trap {
   public void move() {
     if (triggered) {
       if (direction == 0) {
-        yPos -= 13;
+        yPos -= speed;
       } else if (direction == 1) {
-        yPos += 7;
+        yPos += speed;
       } else if (direction == 2) {
-        xPos -= 7;
+        xPos -= speed;
       } else if (direction == 3) {
-        xPos += 7;
+        xPos += speed;
       } else if (direction == 4) {
         xPos += 0;
         yPos += 0;

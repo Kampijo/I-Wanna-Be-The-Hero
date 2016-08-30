@@ -12,7 +12,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
   // THIS IS A DIFFICULT GAME. IF YOU DIE, YOU'RE JUST REALLY BAD AT THE GAME.
 
   private Hero guy; // Declares the hero
-  private Level one; // Declare the level
+  private Levels levels; // Declare the level
   private Music music; // Declare the music that will be played
   private SFX sfx; // Declare the sfx that will be played
   private ImageIcon gameover; // Declare the ImageIcon for game over
@@ -26,7 +26,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
   private Timer splatter = new Timer(35, this);
   // Declaring and initializing panel width and height to position certain
   // elements of the game
-  private final int PANEL_WIDTH = 1194, PANEL_HEIGHT = 571;
+  private final int PANEL_WIDTH = 1200, PANEL_HEIGHT = 600;
 
   // Main method of the program that starts the program
   public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
 
   public HeroAdventure() {
     guy = new Hero(); // Initializes the hero
-    one = new Level(PANEL_WIDTH, PANEL_HEIGHT); // Initializes the level
+    levels = new Levels(PANEL_WIDTH, PANEL_HEIGHT); // Initializes the level
     gameover = new ImageIcon("resources/misc/gameover.png"); // Initializes game
                                                              // over icon
     sfx = new SFX(); // Initializes sound fx
@@ -58,6 +58,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.addKeyListener(this);
     frame.setVisible(true);
+
   }
 
   public void update(Graphics g) {
@@ -76,7 +77,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
     offgc = offscreen.getGraphics(); // gives offgc a graphics context of the
                                      // Image to paint to
     offgc.clearRect(0, 0, d.width, d.height);
-    one.draw(offgc);
+    levels.draw(offgc);
     // Draws to offscreen image
     if (!guy.isDead()) // draws hero only if he isn't dead
     {
@@ -101,10 +102,15 @@ public class HeroAdventure extends JPanel implements KeyListener,
 
   public void actionPerformed(ActionEvent e) {
 
-    one.triggerTrap(guy); // keep track of whether hero triggered a trap
+    levels.triggerTrap(guy); // keep track of whether hero triggered a trap
+
+      if (guy.getX() >= PANEL_WIDTH) {
+          levels.setLevelNumber(2);
+          reset();
+      }
     if (!finish) {
       guy.movement(); // run the hero's movements
-      one.intersect(guy); // check if guy intersects/lands/hits any platforms
+      levels.intersect(guy); // check if guy intersects/lands/hits any platforms
     }
     if (e.getSource() == splatter) // if splatter is running
     {
@@ -199,7 +205,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
   {
     // resets level, hero, music, death particles and stops death timer and
     // restarts movement and tracker timers
-    one.reset();
+    levels.reset();
     guy.reset();
     sfx.stop();
     music.stopBG();
@@ -213,16 +219,23 @@ public class HeroAdventure extends JPanel implements KeyListener,
     finish = false;
 
   }
+  public void reset(){
+      levels.reset();
+      guy.reset();
+  }
 
   // if keys released
   public void keyReleased(KeyEvent g) {
+
     // if right key released, disable hero's right movement
     if (g.getKeyCode() == KeyEvent.VK_RIGHT) {
       Hero.moveRight = false;
+      Hero.moving = false;
     }
     // if left key released, disable hero's left movement
     if (g.getKeyCode() == KeyEvent.VK_LEFT) {
       Hero.moveLeft = false;
+      Hero.moving = false;
     }
   }
 

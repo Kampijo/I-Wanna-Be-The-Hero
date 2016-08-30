@@ -4,7 +4,7 @@ import javax.swing.*;
 public class Hero {
 
   public static int direction, jumpLimit;
-  public static boolean hasJumped, moveLeft, moveRight, grounded, dead;
+  public static boolean hasJumped, moveLeft, moveRight, grounded, dead, moving;
   public static final int EAST = 0;
   public static final int WEST = 1;
   private int xPos, yPos, width, height;
@@ -23,7 +23,7 @@ public class Hero {
     direction = EAST;
     hasJumped = false;
     dead = false;
-
+    moving = false;
   }
 
   public void draw(Graphics g) {
@@ -75,6 +75,7 @@ public class Hero {
   }
 
   public void move() {
+    moving = true;
     if (direction == 0) {
       xPos += 2.5;
     }

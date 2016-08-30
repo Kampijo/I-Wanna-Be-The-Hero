@@ -6,13 +6,13 @@ public class Platform {
 
   private int xPos, yPos, width, height;
   public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, NONE = 4;
-  private int direction;
+  private int direction, speed;
   private boolean triggered;
   private ImageIcon platform;
   private LinkedList<ImageIcon> type = new LinkedList<ImageIcon>();
 
 
-  public Platform(int x, int y, int type, int dir) {
+  public Platform(int x, int y, int type, int speed, int dir) {
     xPos = x;
     yPos = y;
     this.type.add(new ImageIcon("resources/platforms/ground.png"));
@@ -23,6 +23,7 @@ public class Platform {
     width = platform.getIconWidth();
     height = platform.getIconHeight();
     direction = dir;
+    this.speed = speed;
   }
 
   public Image getImg() {
@@ -37,13 +38,13 @@ public class Platform {
   public void move() {
     if (triggered) {
       if (direction == 0) {
-        yPos -= 7;
+        yPos -= speed;
       } else if (direction == 1) {
-        yPos += 7;
+        yPos += speed;
       } else if (direction == 2) {
-        xPos -= 7;
+        xPos -= speed;
       } else if (direction == 3) {
-        xPos += 7;
+        xPos += speed;
       } else if (direction == 4) {
         xPos += 0;
         yPos += 0;
@@ -70,6 +71,8 @@ public class Platform {
   public int getHeight() {
     return height;
   }
+
+  public int getSpeed(){ return speed; }
 
   public void triggered() {
     triggered = true;
