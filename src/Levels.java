@@ -20,7 +20,7 @@ public class Levels {
     platform = new LinkedList<Platform>();
     traps = new LinkedList<Trap>();
     deco = new LinkedList<Background>();
-      levelNumber = 2;
+      levelNumber = 1;
     reset();
   }
 
