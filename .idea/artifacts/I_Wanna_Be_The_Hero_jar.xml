@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="I Wanna Be The Hero:jar">
-    <output-path>$PROJECT_DIR$/</output-path>
+    <output-path>$PROJECT_DIR$/classes/artifacts/I_Wanna_Be_The_Hero_jar</output-path>
     <root id="archive" name="I Wanna Be The Hero.jar">
       <element id="module-output" name="I Wanna Be The Hero" />
+      <element id="dir-copy" path="$PROJECT_DIR$" />
     </root>
   </artifact>
 </component>

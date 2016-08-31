@@ -106,7 +106,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
         levels.triggerTrap(guy); // keep track of whether hero triggered a trap
 
         if (guy.getX() >= PANEL_WIDTH) {
-            levels.setLevelNumber(2);
+            levels.setLevelNumber(levels.getLevelNumber() + 1);
             reset();
         }
         if (!finish) {
@@ -154,7 +154,7 @@ public class HeroAdventure extends JPanel implements KeyListener,
     public void keyPressed(KeyEvent f) {
 
         if (!guy.isDead() && !finish) // only takes into account keys pressed if guy
-        // is not dead (Ex. alive)
+        // is not dead
         {
             if (f.getKeyCode() == KeyEvent.VK_SPACE) // Jump
             {

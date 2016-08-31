@@ -18,7 +18,7 @@ public class Levels {
         platform = new LinkedList<Platform>();
         traps = new LinkedList<Trap>();
         deco = new LinkedList<Background>();
-        levelNumber = 2;
+        levelNumber = 1;
         reset();
     }
 
@@ -95,7 +95,12 @@ public class Levels {
         for (int i = 0; i < traps.size(); i++) {
             if (h.getX() + h.getWidth() >= traps.get(i).getX()
                     && h.getX() + h.getWidth() <= traps.get(i).getX()
-                    + traps.get(i).getWidth()) {
+                    + traps.get(i).getWidth() && (traps.get(i).getDirection() == Platform.UP ||
+                    traps.get(i).getDirection() == Platform.DOWN)) {
+                traps.get(i).triggered();
+            }
+            if(h.getY() >= traps.get(i).getY() && (traps.get(i).getDirection() == Platform.LEFT ||
+                    traps.get(i).getDirection() == Platform.RIGHT)){
                 traps.get(i).triggered();
             }
             if (traps.get(i).getRect().intersects(h.getRect())) {
@@ -108,6 +113,8 @@ public class Levels {
     public void setLevelNumber(int levelNumber) {
         this.levelNumber = levelNumber;
     }
+
+    public int getLevelNumber(){ return levelNumber; }
 
     public void reset() {
         platform.clear();
@@ -155,13 +162,15 @@ public class Levels {
 
         }
         if (levelNumber == 2) {
-
             traps.add(new Trap(120, 85, 3, 20, Trap.DOWN));
+            traps.add(new Trap(175, 485, 0, 40, Trap.RIGHT));
+            traps.add(new Trap(350, 100, 3, 20, Trap.DOWN));
 
             platform.add(new Platform(110, 80, 12, 0, Platform.NONE));
             platform.add(new Platform(120, 95, 12, 0, Platform.NONE));
             platform.add(new Platform(0, frameHeight - 120, 7, 0, Platform.NONE));
-            platform.add(new Platform(220, 400, 1, 1, 400, Platform.LEFTRIGHT));
+            platform.add(new Platform(220, 400, 1, 1, 400, Platform.LEFTRIGHT, true));
+            platform.add(new Platform(340, 100, 12,0, Platform.NONE));
 
             deco.add(new Background(350, 100, 3));
             deco.add(new Background(525, 45, 3));

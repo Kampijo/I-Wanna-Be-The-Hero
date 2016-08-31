@@ -4,43 +4,44 @@ import java.util.LinkedList;
 
 public class Platform {
 
-    private int xPos, yPos, width, height;
+    private int xPos, yPos, width, height, direction, speed, initialPosition, turnPosition, type;
     public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, NONE = 4, LEFTRIGHT = 5;
-    private int direction, speed, initialPosition, turnPosition;
     private boolean triggered, turn;
     private ImageIcon platform;
-    private LinkedList<ImageIcon> type = new LinkedList<ImageIcon>();
+    private LinkedList<ImageIcon> platformTypes = new LinkedList<ImageIcon>();
 
 
     public Platform(int x, int y, int type, int speed, int dir) {
         xPos = x;
         yPos = y;
-        this.type.add(new ImageIcon("resources/platforms/ground.png"));
-        for (int i = 1; i < 13; i++) {
-            this.type.add(new ImageIcon("resources/platforms/platform" + i + ".png"));
-        }
-        platform = this.type.get(type);
-        width = platform.getIconWidth();
-        height = platform.getIconHeight();
         direction = dir;
+        triggered = false;
         this.speed = speed;
+        this.type = type;
+        addImages();
     }
 
-    public Platform(int x, int y, int type, int speed, int turnPosition, int dir) {
+    public Platform(int x, int y, int type, int speed, int turnPosition, int dir, boolean triggered) {
         xPos = x;
         yPos = y;
-        this.type.add(new ImageIcon("resources/platforms/ground.png"));
-        for (int i = 1; i < 13; i++) {
-            this.type.add(new ImageIcon("resources/platforms/platform" + i + ".png"));
-        }
-        platform = this.type.get(type);
-        width = platform.getIconWidth();
-        height = platform.getIconHeight();
         direction = dir;
-        this.speed = speed;
-        this.turnPosition = turnPosition;
         initialPosition = x;
         turn = false;
+        this.triggered = triggered;
+        this.speed = speed;
+        this.turnPosition = turnPosition;
+        this.type = type;
+        addImages();
+    }
+
+    public void addImages(){
+        platformTypes.add(new ImageIcon("resources/platforms/ground.png"));
+        for (int i = 1; i < 13; i++) {
+            platformTypes.add(new ImageIcon("resources/platforms/platform" + i + ".png"));
+        }
+        platform = platformTypes.get(type);
+        width = platform.getIconWidth();
+        height = platform.getIconHeight();
     }
 
     public Image getImg() {
@@ -101,6 +102,12 @@ public class Platform {
 
     public int getSpeed() {
         return speed;
+    }
+    public int getDirection() {
+        return direction;
+    }
+    public void setDirection(int dir) {
+        direction = dir;
     }
 
     public void triggered() {

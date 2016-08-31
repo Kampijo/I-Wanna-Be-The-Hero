@@ -35,10 +35,12 @@ public class SFX {
 
     public void firstJump() {
         sound1.loop(1);
+        sound1.flush();
     }
 
     public void secondJump() {
         sound2.loop(1);
+        sound2.flush();
     }
 
     public void death() {
