@@ -36,7 +36,7 @@ public class Platform {
 
     public void addImages(){
         platformTypes.add(new ImageIcon("resources/platforms/ground.png"));
-        for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < 14; i++) {
             platformTypes.add(new ImageIcon("resources/platforms/platform" + i + ".png"));
         }
         platform = platformTypes.get(type);

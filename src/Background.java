@@ -12,7 +12,7 @@ public class Background {
     public Background(int x, int y, int type) {
         xPos = x;
         yPos = y;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             this.type.add(new ImageIcon("resources/misc/deco" + i + ".png"));
         }
         this.type.add(new ImageIcon("resources/misc/victory.gif"));

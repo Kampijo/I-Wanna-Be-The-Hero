@@ -132,12 +132,12 @@ public class Levels {
 
             deco.add(new Background(200, frameHeight - 407, 1));
             deco.add(new Background(420, frameHeight - 407, 0));
-            deco.add(new Background(110, 85, 2));
-            deco.add(new Background(350, 100, 3));
-            deco.add(new Background(525, 45, 3));
-            deco.add(new Background(650, 130, 2));
-            deco.add(new Background(900, 90, 3));
-            deco.add(new Background(1150, frameHeight - 287, 4));
+            deco.add(new Background(110, 85, 5));
+            deco.add(new Background(350, 100, 4));
+            deco.add(new Background(525, 45, 4));
+            deco.add(new Background(650, 130, 5));
+            deco.add(new Background(900, 90, 4));
+            deco.add(new Background(1150, frameHeight - 287, 6));
 
             traps.add(new Trap(50, frameHeight - 120, 2, 7, Trap.DOWN));
             traps.add(new Trap(220, frameHeight - 360, 0, 0, Trap.NONE));
@@ -170,12 +170,14 @@ public class Levels {
             platform.add(new Platform(120, 95, 12, 0, Platform.NONE));
             platform.add(new Platform(0, frameHeight - 120, 7, 0, Platform.NONE));
             platform.add(new Platform(220, 400, 1, 1, 400, Platform.LEFTRIGHT, true));
-            platform.add(new Platform(340, 100, 12,0, Platform.NONE));
+            platform.add(new Platform(340, 90, 12,0, Platform.NONE));
+            platform.add(new Platform(335, 105, 13, 0, Platform.NONE));
 
-            deco.add(new Background(350, 100, 3));
-            deco.add(new Background(525, 45, 3));
-            deco.add(new Background(650, 130, 2));
-            deco.add(new Background(900, 90, 3));
+            deco.add(new Background(850, 200, 4));
+            deco.add(new Background(1000, 120, 5));
+            deco.add(new Background(525, 45, 4));
+            deco.add(new Background(650, 120, 5));
+            deco.add(new Background(900, 90, 4));
 
 
         }
