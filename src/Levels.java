@@ -165,19 +165,35 @@ public class Levels {
             traps.add(new Trap(120, 85, 3, 20, Trap.DOWN));
             traps.add(new Trap(175, 485, 0, 40, Trap.RIGHT));
             traps.add(new Trap(350, 100, 3, 20, Trap.DOWN));
+            traps.add(new Trap(420, 375, 1, 0, Trap.NONE));
 
             platform.add(new Platform(110, 80, 12, 0, Platform.NONE));
             platform.add(new Platform(120, 95, 12, 0, Platform.NONE));
             platform.add(new Platform(0, frameHeight - 120, 7, 0, Platform.NONE));
             platform.add(new Platform(220, 400, 1, 1, 400, Platform.LEFTRIGHT, true));
+            platform.add(new Platform(620, 400, 1, 1, 495, Platform.RIGHTLEFT, true));
+            platform.add(new Platform(420, 400, 1, 0, Platform.NONE));
             platform.add(new Platform(340, 90, 12,0, Platform.NONE));
             platform.add(new Platform(335, 105, 13, 0, Platform.NONE));
+            platform.add(new Platform(690, 350, 2, 7, Platform.DOWN));
+            platform.add(new Platform(790, 300, 2, 7, Platform.DOWN));
+            platform.add(new Platform(910, 250, 2, 7, Platform.UP));
+            platform.add(new Platform(1090, 350, 4, 0, Platform.NONE));
 
-            deco.add(new Background(850, 200, 4));
+
+            deco.add(new Background(950, 405, 1));
             deco.add(new Background(1000, 120, 5));
             deco.add(new Background(525, 45, 4));
             deco.add(new Background(650, 120, 5));
             deco.add(new Background(900, 90, 4));
+            deco.add(new Background(1170, 183, 6));
+
+            int spikePosition = 320;
+            for (int i = 0; i < 31; i++) {
+
+                traps.add(new Trap(spikePosition, frameHeight - 56, 1, 0, Trap.NONE));
+                spikePosition += 28;
+            }
 
 
         }

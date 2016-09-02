@@ -6,7 +6,7 @@ public class Splatter {
     private BloodParticles[] splatter;
 
     public Splatter() {
-        splatter = new BloodParticles[1000];
+        splatter = new BloodParticles[500];
 
     }
 

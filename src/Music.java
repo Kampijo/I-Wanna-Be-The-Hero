@@ -1,6 +1,7 @@
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.BufferedInputStream;
 
 public class Music implements LineListener {
     private File bg1, bg2, bg3;
@@ -35,7 +36,6 @@ public class Music implements LineListener {
         } catch (IOException e) {
         } catch (LineUnavailableException e) {
         }
-
     }
 
     public void stopBG() {
@@ -64,10 +64,16 @@ public class Music implements LineListener {
         if(type == LineEvent.Type.STOP && !stopMusic){
             if(switchMusic){
                 sound2.start();
+                sound1.stop();
+                sound1.flush();
+                sound1.setFramePosition(0);
                 switchMusic = false;
             }
             else{
                 sound1.start();
+                sound2.stop();
+                sound2.flush();
+                sound2.setFramePosition(0);
                 switchMusic = true;
             }
         }

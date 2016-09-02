@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.EmptyStackException;
 import java.util.LinkedList;
 
 public class Platform {
 
     private int xPos, yPos, width, height, direction, speed, initialPosition, turnPosition, type;
-    public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, NONE = 4, LEFTRIGHT = 5;
+    public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, NONE = 4, LEFTRIGHT = 5, RIGHTLEFT = 6;
     private boolean triggered, turn;
     private ImageIcon platform;
     private LinkedList<ImageIcon> platformTypes = new LinkedList<ImageIcon>();
@@ -76,6 +77,16 @@ public class Platform {
                         turn = false;
                     }
                 }
+            } else if (direction == 6) {
+                if (xPos + width >= turnPosition && !turn) {
+                    xPos -= speed;
+                } else {
+                    turn = true;
+                    xPos += speed;
+                    if (xPos >= initialPosition) {
+                        turn = false;
+                    }
+                }
             }
         }
     }
@@ -85,10 +96,6 @@ public class Platform {
     }
 
     public int getY() {
-        return yPos;
-    }
-
-    public int yPos() {
         return yPos;
     }
 
