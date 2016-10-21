@@ -17,14 +17,13 @@ public class HeroAdventure extends JPanel implements KeyListener,
     private Music music; // Declare the music that will be played
     private SFX sfx; // Declare the sfx that will be played
     private ImageIcon gameover; // Declare the ImageIcon for game over
-    public static Splatter death; // Declare the splatter class (death animation
-    // particles)
-    public static boolean finish; // Declare a boolean that determines whether
-    // player reached the finish line
-    // Declaring and initializing timers that keep track of player position and
-    // death splatter
+    public static Splatter death; // Declare the splatter class (death animation particles)
+    public static boolean finish; // Declare a boolean that determines whether player reached the finish line
+
+    // Declaring and initializing timers that keep track of player position and death splatter
     private Timer tracker = new Timer(15, this);
     private Timer splatter = new Timer(35, this);
+
     // Declaring and initializing panel width and height to position certain
     // elements of the game
     private final int PANEL_WIDTH = 1200, PANEL_HEIGHT = 600;

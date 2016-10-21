@@ -44,8 +44,6 @@ public class Levels {
 
     }
 
-    int num = 0;
-
     public void intersect(Hero h) {
 
         for (int i = 0; i < platform.size(); i++) {
@@ -87,6 +85,10 @@ public class Levels {
         }
         if (h.getX() <= 0) {
             h.setX(0);
+        }
+        if (h.getX() + h.getWidth() >= frameWidth && levelNumber == 2){
+            HeroAdventure.finish = true;
+            h.setX(frameWidth-h.getWidth());
         }
 
     }

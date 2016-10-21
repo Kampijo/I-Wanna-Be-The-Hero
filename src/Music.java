@@ -46,20 +46,24 @@ public class Music implements LineListener {
         sound2.flush();
     }
 
+    // start playing background music
     public void playBG() {
         stopMusic = false;
         sound1.start();
     }
 
+    // play victory
     public void victory() {
         sound3.start();
     }
 
+    // stop victory
     public void stopVictory() {
         sound3.stop();
         sound3.flush();
     }
 
+    // resets audio streams
     public void reset(){
         stopBG();
         stopVictory();
@@ -67,6 +71,8 @@ public class Music implements LineListener {
         sound2.setFramePosition(0);
         sound3.setFramePosition(0);
     }
+
+    // switches between two tracks available after one ends
     public void update(LineEvent line){
         LineEvent.Type type = line.getType();
         if(type == LineEvent.Type.STOP && !stopMusic){
