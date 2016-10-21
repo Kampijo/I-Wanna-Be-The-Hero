@@ -42,6 +42,12 @@ public class SFX {
         sound2.loop(1);
         sound2.flush();
     }
+    public void reset(){
+        stop();
+        sound1.setFramePosition(0);
+        sound2.setFramePosition(0);
+        sound3.setFramePosition(0);
+    }
 
     public void death() {
         sound3.start();

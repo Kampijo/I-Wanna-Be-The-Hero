@@ -59,6 +59,14 @@ public class Music implements LineListener {
         sound3.stop();
         sound3.flush();
     }
+
+    public void reset(){
+        stopBG();
+        stopVictory();
+        sound1.setFramePosition(0);
+        sound2.setFramePosition(0);
+        sound3.setFramePosition(0);
+    }
     public void update(LineEvent line){
         LineEvent.Type type = line.getType();
         if(type == LineEvent.Type.STOP && !stopMusic){

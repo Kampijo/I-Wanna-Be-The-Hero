@@ -208,15 +208,11 @@ public class HeroAdventure extends JPanel implements KeyListener,
         // restarts movement and tracker timers
         levels.reset();
         guy.reset();
-        sfx.stop();
 
-        music.stopBG();
-        music.stopVictory();
-
-        music = new Music();
-        sfx = new SFX();
-
+        music.reset();
+        sfx.reset();
         death.reset();
+
         tracker.start();
         music.playBG();
         splatter.stop();
