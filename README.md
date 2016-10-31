@@ -17,5 +17,5 @@ Step 2: Unzip the archive into desired directory <br/>
 Step 3: Run play.jar <br/>
 
 # Acknowledgements
-[I Wanna Be The Guy](http://kayin.moe/iwbtg/) for inspiring this game.
+[I Wanna Be The Guy](http://kayin.moe/iwbtg/) for inspiring this game <br/>
 Props to Ianboy141 and pserafi for providing the spritesheets.
